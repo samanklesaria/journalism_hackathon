@@ -8,7 +8,7 @@ Search:
   <h2>Results</h2>
   <ul>
   <% @capture_parts.each do |part| %>
-    <li><%= part.capture.title %> <%= part at <%= (Time.local(1,1,1) + part.start).strftime("%M:%S") %><a href="<%= part.capture.url%>?t=<%= part.start %>"><%= part.text %></a></li>
+    <li><%= part.capture.title %> part at <%= (Time.local(1,1,1) + part.start).strftime("%M:%S") %><a href="<%= part.capture.url%>?t=<%= part.start %>"><%= part.text %></a></li>
   <% end %>
   </ul>
 <% end %>
