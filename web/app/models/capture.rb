@@ -11,4 +11,5 @@
 #
 
 class Capture < ApplicationRecord
+  has_many :capture_parts
 end
