@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_01_185049) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_01_185502) do
+  create_table "capture_parts", force: :cascade do |t|
+    t.text "text"
+    t.string "timestamp"
+    t.text "embeddings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "captures", force: :cascade do |t|
     t.string "title"
     t.text "summary"
