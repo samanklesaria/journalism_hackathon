@@ -1,0 +1,5 @@
+- Downloaded the youtube video using the open source library `PyTube`
+- Converted the video to audio using the open source tool `ffmpeg`
+- Extracted text snippets and timestamps from the audio using openai's `whisper-base` model.
+- Summarized each text snippet into a vector embedding using the model `all-MiniLM-L6-v2` from TU Darmstadt.
+
