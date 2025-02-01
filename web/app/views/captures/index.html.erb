@@ -1,14 +1,20 @@
-Search:
 <%= form_tag(captures_path, method: :get) do %>
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag("search") %>
+  <div class="mb-3">
+    <label for="search" class="form-label">Search:</label>
+    <%= text_field_tag(:search, params[:search], class:'form-control') %>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
 
 <% if(params[:search]) %>
   <h2>Results</h2>
-  <ul>
+  <ul class="list-group list-group-flush">
   <% @capture_parts.each do |part| %>
-    <li><%= part.capture.title %> part at <%= (Time.local(1,1,1) + part.start).strftime("%M:%S") %><a href="<%= part.capture.url%>?t=<%= part.start %>"><%= part.text %></a></li>
+    <a class="list-group-item list-group-item-action" href="<%= part.capture.url%>?t=<%= part.start %>">
+      <span class="fs-5"><%= part.capture.title %> part at <%= (Time.local(1,1,1) + part.start).strftime("%M:%S") %></span>
+      <% snippet = part.snippet(params[:search])%>
+      <blockquote>&hellip;<%= snippet[1] %><mark><%= snippet[2] %></mark> <%= snippet[3] %> &hellip;</blockquote>
+    </a>
   <% end %>
   </ul>
 <% end %>

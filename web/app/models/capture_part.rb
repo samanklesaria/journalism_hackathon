@@ -21,4 +21,11 @@ class CapturePart < ApplicationRecord
   def start
     timestamp.match(/\[(.*?),/)[1].to_i
   end
+
+  def snippet(term)
+    ix = text.downcase.index(term.downcase)
+    text[(ix - 10), (ix + 10)]
+
+    text.match(/(\W\w+.*?)(#{term})(.*?\W){,10}/m)
+  end
 end
