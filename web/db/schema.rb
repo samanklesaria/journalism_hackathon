@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_01_185502) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_01_193007) do
   create_table "capture_parts", force: :cascade do |t|
     t.text "text"
     t.string "timestamp"
     t.text "embeddings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "capture_id"
+    t.index ["capture_id"], name: "index_capture_parts_on_capture_id"
   end
 
   create_table "captures", force: :cascade do |t|
@@ -40,4 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_185502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "capture_parts", "captures"
 end
