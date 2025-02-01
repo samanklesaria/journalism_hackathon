@@ -17,4 +17,8 @@
 
 class CapturePart < ApplicationRecord
   belongs_to :capture
+
+  def start
+    timestamp.match(/\[(.*?),/)[1].to_i
+  end
 end

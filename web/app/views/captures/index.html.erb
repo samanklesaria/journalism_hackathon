@@ -1,0 +1,14 @@
+Search:
+<%= form_tag(captures_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("search") %>
+<% end %>
+
+<% if(params[:search]) %>
+  <h2>Results</h2>
+  <ul>
+  <% @capture_parts.each do |part| %>
+    <li><a href="<%= part.capture.url%>?t=<%= part.start %>"><%= part.text %></a></li>
+  <% end %>
+  </ul>
+<% end %>
