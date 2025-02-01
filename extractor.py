@@ -1,3 +1,10 @@
+from pytube.download_helper import download_video
+
+def extract_video(video):
+    stuff = download_video(url=video, output="video.mp4")
+    # TODO finish this part. 
+
+
 def translate(audio_file):
     """Returns a list of dicts with keys 'timestamp' and 'text'."""
     asr_pipeline = pipeline(
