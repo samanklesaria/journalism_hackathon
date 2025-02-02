@@ -23,9 +23,11 @@ class CapturePart < ApplicationRecord
   end
 
   def snippet(term)
-    ix = text.downcase.index(term.downcase)
-    text[(ix - 10), (ix + 10)]
-
-    text.match(/(\W\w+.*?)(#{term})(.*?\W){,10}/m)
+    matches = text.match(/(.*?)(#{term})(.*)/m)
+    [
+      matches[1].reverse.truncate_words(10).reverse,
+      matches[2],
+      matches[3].truncate_words(10)
+    ]
   end
 end

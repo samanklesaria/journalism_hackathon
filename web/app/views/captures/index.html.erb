@@ -13,7 +13,7 @@
     <a class="list-group-item list-group-item-action" href="<%= part.capture.url%>?t=<%= part.start %>">
       <span class="fs-5"><%= part.capture.title %> part at <%= (Time.local(1,1,1) + part.start).strftime("%M:%S") %></span>
       <% snippet = part.snippet(params[:search])%>
-      <blockquote>&hellip;<%= snippet[1] %><mark><%= snippet[2] %></mark> <%= snippet[3] %> &hellip;</blockquote>
+      <blockquote><%= snippet[0] %><mark><%= snippet[1] %></mark><%= snippet[2] %></blockquote>
     </a>
   <% end %>
   </ul>
